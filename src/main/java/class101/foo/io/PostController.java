@@ -44,7 +44,8 @@ public class PostController {
             return postCacheService.getFirstPostPage();
         }
         return postRepository.findAll(
-                PageRequest.of(page-1, PAGE_SIZE, Sort.by("id").descending())
+                //PageRequest.of(page-1, PAGE_SIZE, Sort.by("id").descending())
+                PageRequest.of(page-1, PAGE_SIZE, Sort.by(Sort.Direction.DESC, "id"))
         );
     }
 
