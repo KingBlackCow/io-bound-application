@@ -2,6 +2,7 @@ package class101.foo.io;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,21 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class PostController {
 
     private static Integer PAGE_SIZE = 20;
-
-    @Autowired
-    PostRepository postRepository;
-
-    @Autowired
-    Producer producer;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
-    @Autowired
-    PostCacheService postCacheService;
+    private final PostRepository postRepository;
+    private final Producer producer;
+    private final ObjectMapper objectMapper;
+    private final PostCacheService postCacheService;
 
     // 1. 글을 작성한다.
     @PostMapping("/post")

@@ -1,5 +1,6 @@
 package class101.foo.io;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -8,9 +9,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class PostCacheService {
-    @Autowired
-    PostRepository postRepository;
+    private final PostRepository postRepository;
 
     private Page<Post> firstPostPage;
 
