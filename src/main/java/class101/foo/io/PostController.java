@@ -17,7 +17,7 @@ public class PostController {
 
     private static Integer PAGE_SIZE = 20;
     private final PostRepository postRepository;
-    private final Producer producer;
+//    private final Producer producer;
     private final ObjectMapper objectMapper;
     private final PostCacheService postCacheService;
 
@@ -25,9 +25,9 @@ public class PostController {
     @PostMapping("/post")
     public Post createPost(@RequestBody Post post) throws JsonProcessingException {
         String jsonPost = objectMapper.writeValueAsString(post); //문자열을 json으로 변환
-        producer.sendTo(jsonPost);
-        return post;
-        //return postRepository.save(post);
+        //producer.sendTo(jsonPost);
+        //return post;
+        return postRepository.save(post);
     }
 
     // 2-1. 글 목록을 조회한다.
